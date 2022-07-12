@@ -1,0 +1,36 @@
+.signupLink {
+    text-decoration: none;
+    margin-left: 2px;
+}
+
+.googleButton {
+    padding: 10px;
+    outline: none;
+    border: 0;
+    width: 200px;
+    margin: auto;
+    background-color: #4E82E7;
+    color: white;
+}
+
+.googleIcon {
+    height: 44px;
+    width: 45px;
+    position: relative;
+    left: 90px;
+    border: 0.5px solid grey;
+    top: -0.5px;
+}
+
+@media screen and (max-width:1200px) {
+    .googleIcon{
+        top:0;
+    }  
+}
+
+@media screen and (max-width:580px) {
+    .googleIcon{
+        left:50px;
+    }  
+}
+

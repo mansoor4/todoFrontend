@@ -1,0 +1,29 @@
+.profile_image {
+    height: 200px;
+    width: 200px;
+    box-shadow: 0px 0px 10px 2px rgb(215 215 215);
+    border-radius: 50%;
+}
+
+.profile_body_card {
+    width: 80%;
+}
+
+.profile_body_header {
+    color: white;
+    background-color: #212529 !important;
+    text-transform: capitalize;
+}
+
+.profile_body_title,
+.profile_body_h6_header {
+    color: #212529;
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width:995px) {
+    .profile_body_card {
+        width: 100%;
+    }
+}

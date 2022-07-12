@@ -1,0 +1,22 @@
+.image_container{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.image_img{
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0.5px 0.5px 10px rgb(230, 230, 230);
+}
+
+.removeIcon{
+    color: #212529;
+    cursor: pointer;
+    position: relative;
+    top: 90px;
+    right: 15px;
+    font-size: 20px;
+}

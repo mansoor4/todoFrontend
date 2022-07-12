@@ -1,0 +1,21 @@
+.modal {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    top: 20%;
+    left: 50%;
+    width:500px;
+    border-radius: 0.5rem;
+    transform: translateX(-250px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    z-index: 200;
+}
+
+@media screen and (max-width:550px) {
+    .modal{
+        width: 98%;
+        transform: translateX(0);
+        left:1%;
+    }
+    
+}
