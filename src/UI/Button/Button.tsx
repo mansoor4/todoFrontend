@@ -9,7 +9,7 @@ const Button: FC<ButtonType> = (props) => {
 	const idCheck = id === curId;
 
 	let buttonRender = <button
-		className={`btn ${style} mt-2 mb-2`} onClick={submitHandler}>{children}</button>;
+		className={`btn mt-2 mb-2 ${style}`} onClick={submitHandler}>{children}</button>;
 
 	if (isLoading && typeCheck && idCheck) buttonRender = <Oval
 		height={40}

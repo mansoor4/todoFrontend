@@ -6,7 +6,7 @@ import getToken from '../../utils/getToken';
 import { bindActionCreators } from 'redux';
 import * as authActionCreators from '../../redux/auth/actionCreator';
 import classes from './Header.module.css';
-import Button from '../Button/Button';
+import { Oval } from 'react-loader-spinner';
 
 const Header: FC = () => {
 	const imageUrl = useAppSelector((state) => state.user.profile?.url);
@@ -32,7 +32,16 @@ const Header: FC = () => {
 
 						</li>
 						<li className="nav-item me-4 mt-3 mt-md-0">
-							<Button isLoading={isLoading} submitHandler={() => logout(navigate)} style='btn btn-outline-light'>Logout</Button>
+							{!isLoading &&
+								<button onClick={() => logout(navigate)} className=' btn btn-outline-light'>Logout</button>
+							}
+							{isLoading &&
+								<Oval
+									height={40}
+									width={40}
+									color='#b8b8b8'
+									secondaryColor='#b8b8b8' />
+							}
 						</li>
 					</ul>
 					}
@@ -54,8 +63,8 @@ const Header: FC = () => {
 
 				</div>
 			</div>
-		</nav>
-	</div>;
+		</nav >
+	</div >;
 };
 
 export default Header;
