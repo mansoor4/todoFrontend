@@ -3,7 +3,6 @@ import User from '../user/User';
 
 type AuthResponse = {
     message?: string,
-    token?: string,
     user?: User,
     profile?: Profile,
 };

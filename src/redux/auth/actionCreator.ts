@@ -17,8 +17,8 @@ export const signin = (userData: User, navigate: NavigateFunction) => async (dis
 		dispatch({ type: loadingActionTypes.LOADING_START });
 
 		const result = await axios.post<AuthResponse>('/auth/signin', userData);
-		const { data: { token, user, profile } } = result;
-		if (token) localStorage.setItem('token', token);
+		const { data: { user, profile } } = result;
+		localStorage.setItem('token', 'true');
 		dispatch({ type: authActionTypes.SIGNIN });
 		dispatch({ type: userActionTypes.USER, payload: { user, profile } });
 		dispatch({ type: loadingActionTypes.LOADING_END });
@@ -61,9 +61,19 @@ export const signup = (userData: User, fileData: File | null, navigate: Navigate
 	}
 };
 
-export const logout = (navigate: NavigateFunction) => (dispatch: Dispatch) => {
-	localStorage.removeItem('token');
-	dispatch({ type: authActionTypes.LOGOUT });
-	navigate('/signin');
-	toast.success('Logout Successfull!');
+export const logout = (navigate: NavigateFunction) => async (dispatch: Dispatch) => {
+	try {
+		dispatch({ type: authActionTypes.LOGOUT_START });
+		dispatch({ type: loadingActionTypes.LOADING_START });
+		await axios.get<AuthResponse>('/auth/logout');
+		dispatch({ type: authActionTypes.LOGOUT });
+		dispatch({ type: loadingActionTypes.LOADING_END });
+		localStorage.removeItem('token');
+		navigate('/signin');
+		toast.success('Logout Successfull!');
+	} catch (err) {
+		dispatch({ type: authActionTypes.LOGOUT_FAILED });
+		dispatch({ type: loadingActionTypes.LOADING_END });
+		errorHandler(err);
+	}
 };

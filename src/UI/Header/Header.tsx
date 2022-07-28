@@ -6,9 +6,11 @@ import getToken from '../../utils/getToken';
 import { bindActionCreators } from 'redux';
 import * as authActionCreators from '../../redux/auth/actionCreator';
 import classes from './Header.module.css';
+import Button from '../Button/Button';
 
 const Header: FC = () => {
 	const imageUrl = useAppSelector((state) => state.user.profile?.url);
+	const isLoading = useAppSelector((state) => state.auth.isLoading);
 	const dispatch = useAppDispatch();
 	const { logout } = bindActionCreators(authActionCreators, dispatch);
 	const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Header: FC = () => {
 
 						</li>
 						<li className="nav-item me-4 mt-3 mt-md-0">
-							<button onClick={() => logout(navigate)} className='btn btn-outline-light'>Logout</button>
+							<Button isLoading={isLoading} submitHandler={() => logout(navigate)} style='btn btn-outline-light'>Logout</Button>
 						</li>
 					</ul>
 					}

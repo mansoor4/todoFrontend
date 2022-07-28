@@ -45,6 +45,18 @@ const authReducer: Reducer<AuthState, AnyAction> = (state = initialState, action
 			isLoading: false,
 		};
 
+	case actionTypes.LOGOUT_START:
+		return {
+			...state,
+			isLoading: true,
+		};
+
+	case actionTypes.LOGOUT_FAILED:
+		return {
+			...state,
+			isLoading: false,
+		};
+
 	case actionTypes.LOGOUT:
 		return {
 			...state,
