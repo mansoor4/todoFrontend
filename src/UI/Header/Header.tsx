@@ -37,8 +37,8 @@ const Header: FC = () => {
 							}
 							{isLoading &&
 								<Oval
-									height={30}
-									width={30}
+									height={35}
+									width={35}
 									color='#b8b8b8'
 									secondaryColor='#b8b8b8' />
 							}
