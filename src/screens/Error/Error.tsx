@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import getToken from '../../utils/getToken';
+import getUserId from '../../utils/getUserId';
 import classes from './Error.module.css';
 
 const Error: FC = () => {
-	const token = getToken();
+	const userId = getUserId();
 
 	return <div className='container mt-5 mb-5 text-center'>
 		<h1>Something went wrong!</h1>
-		<p>Go to {token ? <Link
+		<p>Go to {userId ? <Link
 			className={classes.link}
 			to='/'
 			onClick={() => window.location.reload()}> Home Page</Link> : <Link

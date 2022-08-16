@@ -6,7 +6,7 @@ import Header from './UI/Header/Header';
 import useGetUser from './hooks/useGetUser';
 import Protected from './components/Protected/Protected';
 import { Oval } from 'react-loader-spinner';
-import getToken from './utils/getToken';
+import getUserId from './utils/getUserId';
 import classes from './App.module.css';
 
 /* Screens */
@@ -23,8 +23,8 @@ const App = () => {
 	const { getUser, isLoading } = useGetUser();
 	const disable = useAppSelector(state => state.loading.disable);
 	useEffect(() => {
-		const token = getToken();
-		if (token) getUser();
+		const userId = getUserId();
+		if (userId) getUser();
 	}, []);
 
 	return (
@@ -37,10 +37,10 @@ const App = () => {
 				<Fragment>
 					<main>
 						<Routes>
-							<Route path='/' element={<Protected nav='/signin' tokenBool={false} Component={Todo} />} />
-							<Route path='/signup' element={<Protected nav='/' tokenBool={true} Component={Signup} />} />
-							<Route path='signin' element={<Protected nav='/' tokenBool={true} Component={Signin} />} />
-							<Route path='/profile' element={<Protected nav='/signin' tokenBool={false} Component={Profile} />} />
+							<Route path='/' element={<Protected nav='/signin' userIdBool={false} Component={Todo} />} />
+							<Route path='/signup' element={<Protected nav='/' userIdBool={true} Component={Signup} />} />
+							<Route path='signin' element={<Protected nav='/' userIdBool={true} Component={Signin} />} />
+							<Route path='/profile' element={<Protected nav='/signin' userIdBool={false} Component={Profile} />} />
 							<Route path='*' element={<PageNotFound />} />
 						</Routes>
 					</main>

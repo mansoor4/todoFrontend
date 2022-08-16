@@ -5,5 +5,6 @@ type AuthResponse = {
     message?: string,
     user?: User,
     profile?: Profile,
+    userId?: string,
 };
 export default AuthResponse;

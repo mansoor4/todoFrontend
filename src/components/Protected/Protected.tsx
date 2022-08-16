@@ -1,18 +1,18 @@
 import React, { FC, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import getToken from '../../utils/getToken';
+import getUserId from '../../utils/getUserId';
 
 type ProtectedProps = {
     nav: string,
-    tokenBool: boolean,
+    userIdBool: boolean,
     Component: FC
     children?: ReactNode,
 }
 
 const Protected: FC<ProtectedProps> = (props) => {
-	const { nav, tokenBool, Component } = props;
-	const token = getToken();
-	if ((!token && !tokenBool) || (token && tokenBool)) return <Navigate to={nav} replace />;
+	const { nav, userIdBool, Component } = props;
+	const userId = getUserId();
+	if ((!userId && !userIdBool) || (userId && userIdBool)) return <Navigate to={nav} replace />;
 	return <Component />;
 };
 

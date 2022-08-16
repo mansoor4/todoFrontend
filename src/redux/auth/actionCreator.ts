@@ -17,8 +17,8 @@ export const signin = (userData: User, navigate: NavigateFunction) => async (dis
 		dispatch({ type: loadingActionTypes.LOADING_START });
 
 		const result = await axios.post<AuthResponse>('/auth/signin', userData);
-		const { data: { user, profile } } = result;
-		localStorage.setItem('token', 'true');
+		const { data: { user, profile, userId } } = result;
+		localStorage.setItem('userId', userId!);
 		dispatch({ type: authActionTypes.SIGNIN });
 		dispatch({ type: userActionTypes.USER, payload: { user, profile } });
 		dispatch({ type: loadingActionTypes.LOADING_END });
@@ -68,7 +68,7 @@ export const logout = (navigate: NavigateFunction) => async (dispatch: Dispatch)
 		await axios.get<AuthResponse>('/auth/logout');
 		dispatch({ type: authActionTypes.LOGOUT });
 		dispatch({ type: loadingActionTypes.LOADING_END });
-		localStorage.removeItem('token');
+		localStorage.removeItem('userId');
 		navigate('/signin');
 		toast.success('Logout Successfull!');
 	} catch (err) {

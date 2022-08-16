@@ -4,13 +4,13 @@ import * as actionTypes from '../redux/user/actionType';
 import axios from '../axios';
 import UserResponse from '../types/user/UserResponse';
 import errorHandler from '../utils/errorHandler';
-import getToken from '../utils/getToken';
+import getUserId from '../utils/getUserId';
 import * as loadingActionTypes from '../redux/loading/actionType';
 
 
 const useGetUser = () => {
-	const token = getToken();
-	const [isLoading, setIsLoading] = useState(token ? true : false);
+	const userId = getUserId();
+	const [isLoading, setIsLoading] = useState(userId ? true : false);
 	const dispatch = useAppDispatch();
 	const getUser = async () => {
 		try {
