@@ -6,5 +6,6 @@ type AuthResponse = {
     user?: User,
     profile?: Profile,
     userId?: string,
+    token?: string,
 };
 export default AuthResponse;

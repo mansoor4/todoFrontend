@@ -70,17 +70,26 @@ const Signin: FC = () => {
 						<hr />
 						<div className='d-flex'>
 							{!isLoadingGoogle &&
-								<div className='row justify-content-center'>
-									<div className='col-3 col-sm-4'>
+								// <div className='row justify-content-center'>
+								// 	<div className='col-3 col-sm-4'>
+								// 		<img src={googleIcon} className={classes.googleIcon} />
+								// 	</div>
+								// 	<div className='col-7 col-sm-6'>
+								// 		<button
+								// 			className={classes.googleButton} onClick={getGoogleLoginUrl}>
+								// 			Google Login
+								// 		</button>
+								// 	</div>
+								// </div>
+								<div className={classes.googleButtonContainer}>
+									<button
+										className={classes.googleButton} onClick={getGoogleLoginUrl}>
 										<img src={googleIcon} className={classes.googleIcon} />
-									</div>
-									<div className='col-7 col-sm-6'>
-										<button
-											className={classes.googleButton} onClick={getGoogleLoginUrl}>
-											Google Login
-										</button>
-									</div>
-								</div>}
+										Google Login
+									</button>
+
+								</div>
+							}
 							{isLoadingGoogle && <Oval
 								wrapperStyle={{ margin: 'auto' }}
 								height={40}

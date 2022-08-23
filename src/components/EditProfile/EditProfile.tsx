@@ -32,7 +32,7 @@ const EditProfile: FC<EditProfileType> = (props) => {
 							inputs={inputs}
 							changeHandler={changeHandler} />
 						<div className='row'>
-							<div className='col-5 d-flex justify-content-between'>
+							<div className='col-12 d-flex justify-content-between'>
 								<Button
 									style='btn-primary'
 									isLoading={isLoading}

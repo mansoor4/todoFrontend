@@ -31,7 +31,7 @@ const TodoList: FC<TodoListType> = (props) => {
 						{todo.title?.toUpperCase()}
 					</div>
 					<div className='row'>
-						<div className='col-11 d-flex'>
+						<div className={`col-12 col-sm-11 d-flex ${classes.buttonContainer}`}>
 							<Button
 								style='btn-outline-success btn-sm'
 								isLoading={isLoading}
@@ -50,7 +50,7 @@ const TodoList: FC<TodoListType> = (props) => {
 								curId={todo.todo_id}
 							> Delete</Button>
 						</div>
-						<div className='col-1'>
+						<div className={`col-12 col-sm-1 ${classes.arrowContainer}`}>
 							<FontAwesomeIcon icon={faArrowRightLong} onClick={() => selectOpenHandler(todo.todo_id)} className={classes.arrow} />
 						</div>
 					</div>

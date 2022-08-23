@@ -9,12 +9,14 @@ const TodoData: FC<TodoDataType> = (props) => {
 			<div className='col'>
 				<div className="card border-0">
 					<div className="card-header border-0" style={{ backgroundColor: 'white' }}>
-						<h3 style={{ color: '#212529',textDecoration:'underline' }}>{todo.title?.toUpperCase()}</h3>
+						<h3 style={{ color: '#212529', textDecoration: 'underline' }}>{todo.title?.toUpperCase()}</h3>
 					</div>
 					<div className="card-body">
-						<h5 style={{ color: '#c1bebe' }}>{todo.description?.toUpperCase()}</h5>
-						<hr/>
-						<div className='col-5 d-flex justify-content-between'>
+						<div>
+							<h5 style={{ color: '#c1bebe' }}>{todo.description?.toUpperCase()}</h5>
+						</div>
+						<hr />
+						<div className='col-12 d-flex justify-content-between'>
 							<Button
 								style='btn-primary'
 								submitHandler={() => updateOpenHandler(todo.todo_id)}>Update</Button>

@@ -18,8 +18,9 @@ const useUserVerify = () => {
 			dispatch({ type: loadingActionTypes.LOADING_START });
 			const result = await axios.post<AuthResponse>('/auth/verifyUser', { code });
 			setIsLoading(false);
-			const { data: { user, profile, userId } } = result;
+			const { data: { user, profile, userId, token } } = result;
 			localStorage.setItem('userId', userId!);
+			axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
 			dispatch({ type: userActionTypes.USER, payload: { user, profile } });
 			dispatch({ type: loadingActionTypes.LOADING_END });
 			navigate('/');

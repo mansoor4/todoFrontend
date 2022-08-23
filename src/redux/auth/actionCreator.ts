@@ -17,8 +17,9 @@ export const signin = (userData: User, navigate: NavigateFunction) => async (dis
 		dispatch({ type: loadingActionTypes.LOADING_START });
 
 		const result = await axios.post<AuthResponse>('/auth/signin', userData);
-		const { data: { user, profile, userId } } = result;
+		const { data: { user, profile, userId, token } } = result;
 		localStorage.setItem('userId', userId!);
+		axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
 		dispatch({ type: authActionTypes.SIGNIN });
 		dispatch({ type: userActionTypes.USER, payload: { user, profile } });
 		dispatch({ type: loadingActionTypes.LOADING_END });
@@ -51,7 +52,7 @@ export const signup = (userData: User, fileData: File | null, navigate: Navigate
 		dispatch({ type: authActionTypes.SIGNUP });
 		dispatch({ type: loadingActionTypes.LOADING_END });
 		navigate('/signin');
-		toast.success('Signin Successfull!');
+		toast.success('Signup Successfull!');
 
 
 	} catch (err: any) {
@@ -69,6 +70,7 @@ export const logout = (navigate: NavigateFunction) => async (dispatch: Dispatch)
 		dispatch({ type: authActionTypes.LOGOUT });
 		dispatch({ type: loadingActionTypes.LOADING_END });
 		localStorage.removeItem('userId');
+		delete axios.defaults.headers.common['Authorization'];
 		navigate('/signin');
 		toast.success('Logout Successfull!');
 	} catch (err) {

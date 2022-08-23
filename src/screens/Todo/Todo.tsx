@@ -43,7 +43,7 @@ const Todo: FC = () => {
 			const result = await axios.post<TodoResponse>('/todo/', newTodo);
 			const { data: { todo: createdTodo } } = result;
 			dispatch({ type: todoActionTypes.TODO_CREATE, payload: { newTodo: { ...createdTodo, update: false, select: false } } });
-			setTodoData({ title: '', description: '' });
+			resetDataHandler();
 			setFilter(FilterType.ALL);
 			setTodoAdd(false);
 			loadingDispatch({ type: loadingActionTypes.LOADING_END });
@@ -137,10 +137,18 @@ const Todo: FC = () => {
 
 	const todoAddCloseHandler = () => {
 		setTodoAdd(false);
+		resetDataHandler();
 	};
 
 	const filterChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setFilter(event.target.value);
+	};
+
+	const resetDataHandler = () => {
+		setTodoData({
+			title: '',
+			description: '',
+		});
 	};
 
 
@@ -173,7 +181,7 @@ const Todo: FC = () => {
 		<div className={`row mt-4 mb-5 shadow ${classes.todo_container}`}>
 			<div className='col-12 d-flex justify-content-center'>
 				<div className='row' style={{ width: '100%' }}>
-					<div className='col-6  mt-2' style={{ margin: 'auto' }}>
+					<div className='col-10 col-sm-6  mt-2' style={{ margin: 'auto' }}>
 						<FilterTodo
 							filter={filter}
 							filterChangeHandler={filterChangeHandler} />

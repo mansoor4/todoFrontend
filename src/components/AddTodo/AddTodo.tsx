@@ -5,11 +5,12 @@ import Button from '../../UI/Button/Button';
 import InputList from '../InputList/InputList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
+import classes from './AddTodo.module.css';
 
 const AddTodo: FC<AddTodoType> = (props) => {
 	const { inputs, button, changeHandler, todoAddCloseHandler } = props;
 	const { isLoading, submitHandler, loadingType } = button;
-	return <div className='container'>
+	return <div className={classes.addTodoContainer}>
 		<div className='row'>
 			<div className='col'>
 				<div className="card  shadow-sm">
@@ -20,7 +21,7 @@ const AddTodo: FC<AddTodoType> = (props) => {
 						<InputList
 							inputs={inputs}
 							changeHandler={changeHandler} />
-						<div className='col-5 d-flex justify-content-between'>
+						<div className='col-12 d-flex justify-content-between'>
 							<Button
 								style='btn-primary'
 								isLoading={isLoading}

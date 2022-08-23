@@ -1,5 +1,22 @@
-.arrow{
-    color:#c9c9c9;
+.arrow {
+    color: #c9c9c9;
     cursor: pointer;
     transform: translateY(18px);
+}
+
+@media screen and (max-width:575.5px) {
+    .buttonContainer {
+        justify-content: space-between;
+    }
+
+    .arrow {
+        transform: translateY(0px);
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .arrowContainer {
+        display: flex;
+        justify-content: end;
+    }
 }

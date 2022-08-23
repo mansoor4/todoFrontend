@@ -3,34 +3,35 @@
     margin-left: 2px;
 }
 
+.googleButtonContainer {
+    width: 100%;
+}
+
 .googleButton {
-    padding: 10px;
     outline: none;
     border: 0;
-    width: 200px;
+    max-width: 200px;
+    width: 98%;
+    height: 45px;
     margin: auto;
     background-color: #4E82E7;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .googleIcon {
-    height: 44px;
+    height: 45px;
     width: 45px;
-    position: relative;
-    left: 90px;
-    border: 0.5px solid grey;
-    top: -0.5px;
+    position: absolute;
+    left: 0;
+    border: 0.2px solid grey;
 }
 
-@media screen and (max-width:1200px) {
-    .googleIcon{
-        top:0;
-    }  
+@media screen and (max-width:240px) {
+    .googleButton{
+        justify-content: end;
+    }
 }
-
-@media screen and (max-width:580px) {
-    .googleIcon{
-        left:50px;
-    }  
-}
-
